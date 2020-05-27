@@ -1,0 +1,17 @@
+Multithreading => É UMA MANEIRA DE OBTER UMA MULTI TAREFA.
+
+Thread = fio 
+
+	Na computação, um processo é uma instância de um programa de computador que está sendo executado. Qualquer processo possui 3 componentes básicos:
+
+ => Um programa executável.
+
+ => Os dados associados necessários ao programa (variáveis, espaço de trabalho, buffers, etc.)
+
+ => O contexto de execução do programa (Estado do processo)
+
+	Multithreading é definido como a capacidade de um processador executar vários threads simultaneamente.
+
+	Em uma CPU simples, de núcleo único, é alcançada usando alternância frequente entre threads. Isso é denominado como alternância de contexto . Na alternância de contexto, o estado de um encadeamento é salvo e o estado de outro encadeamento é carregado sempre que ocorre uma interrupção (devido a E / S ou definida manualmente). A alternância de contexto ocorre com tanta frequência que todos os threads parecem estar funcionando paralelamente (isso é denominado como multitarefa ).
+
+fonte: https://www.geeksforgeeks.org/multithreading-python-set-1/?ref=lbp
