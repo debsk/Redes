@@ -1,4 +1,4 @@
-import socket
+import socket, threading
 
 def clientwhile_msg(con):
         print ("aguardando conexao") 
@@ -9,6 +9,8 @@ def clientwhile_msg(con):
         while recebe.decode('utf-8') != '0':
                 recebe = con.recv(1024) 
                 print ("mensagem recebida:", recebe.decode('utf-8'))
+        con.close()
+        print('conexao fechada')
         return recebe
 
 host = '' 
@@ -21,6 +23,8 @@ serv_socket.listen(10)
 while True:
         con, cliente = serv_socket.accept() 
         print(cliente)
+        t1 = threading.Thread(target = clientwhile_msg, args = (con,))
+        t1.start()
         clientwhile_msg(con)
         con.close()
 serv_socket.close()
