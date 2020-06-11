@@ -1,20 +1,26 @@
 import threading
-# atividade 03 
-def unknow_threading(id):
-    quant = n / nt
-    if id <= quant  :
-        for i in range (quant):
-            v[i] += 1 
+# atividade 03 , v eh divisivel, 2 (ini, fim ) formulas em funcao de id 
+def unknow_threading(t, id):
+    ini   = len(v) // t
+    fim   = t
+    parte =  id * t  
+    for i in range (ini + parte, fim  + parte):
+        v[i] += 1
+    return v 
+    
+v  = [0]*20  
+v1 = []    
+t  = int(input('threadings:'))  
 
-n  = int(input('tamanho do vetor:'))
-nt = int(input('threadings:'))
-v  = [0]*n
-t1 = threading.Thread(target = unknow_threading, args = (nt, ))
- 
-t  = []
-for i in range (nt):
-    t.append(t1.join())
+for i in range (t):
+    a = threading.Thread(target=unknow_threading, args = (t, i,))
+    v1.append(a)
+    a.start()
 
-print(t)
+for j in v1:
+    j.join()
+
+print(unknow_threading())
+
 
 
