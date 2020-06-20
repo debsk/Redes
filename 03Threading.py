@@ -16,7 +16,7 @@ def unknow_threading(t, id):
 
 v1 = []    
 t  = int(input('threadings:')) 
-n  = int(input("tamanho do vetor"))
+n  = int(input("tamanho do vetor: "))
 v  = [0] *n  
 
 for i in range (t):

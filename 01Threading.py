@@ -13,9 +13,9 @@ def meu_thread_cpu(id):
         time.sleep(1)
 
 
-t1 = threading.Thread(target=meu_thread_memory, args = (id, ))
+t1 = threading.Thread(target = meu_thread_memory, args = (id, ))
 t1.start()
-t2 = threading.Thread(target=meu_thread_cpu,    args = (id, ))
+t2 = threading.Thread(target = meu_thread_cpu,    args = (id, ))
 t2.start()
 print()
 print(t1)
