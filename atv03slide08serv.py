@@ -1,5 +1,5 @@
 from socket import *
-import struct
+import struct, pickle
 
 def listaDivisores(N):
     
@@ -14,23 +14,24 @@ def listaDivisores(N):
 serverPort   = 12000
 serverSocket = socket(AF_INET, SOCK_STREAM)
 serverSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
-
 serverSocket.bind(('localhost', serverPort))
-
 serverSocket.listen(1)
 
 while True:
-
+    
     print("Piscou enviei!")
     conexaoSocket, end = serverSocket.accept()
     N_bytes            = conexaoSocket.recv(8)
     (N, )              = struct.unpack("i", N_bytes)
     X                  = listaDivisores(N)
-
+    tamanho            = len(X)
+    '''
+    conexaoSocket.send(struct.pack('i',tamanho))
     for i in range (len(X)):
-        
         conexaoSocket.send(struct.pack("i",X[i]))
-
+    '''
+    X_bytes = pickle.dumps(X)
+    conexaoSocket.send(X_bytes)
     conexaoSocket.close()
 
 
